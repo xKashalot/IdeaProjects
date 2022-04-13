@@ -39,13 +39,16 @@ public class UserDaoImp implements UserDao {
       String s = car.getModel() + " " + car.getSeries();
       System.out.println("Поиск по машине - " + s );
       List<User> users = listUsers();
-      for (User user : users) {
-         if (user.getCar().contains(car.toString())){
-            User wanteduser = user;
-            return wanteduser;
-         }
-      }
-      return null;
+      User wantedUser = users.stream()
+              .filter(user -> user.getCar().equals(car.toString()))
+              .findAny().orElse(null);
+//      for (User user : users) {
+//         if (user.getCar().contains(car.toString())){
+//            User wanteduser = user;
+//            return wanteduser;
+//         }
+//      }
+      return wantedUser;
    }
 
 
