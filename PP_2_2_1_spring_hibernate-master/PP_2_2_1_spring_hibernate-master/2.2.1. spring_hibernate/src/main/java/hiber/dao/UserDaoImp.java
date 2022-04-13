@@ -36,10 +36,8 @@ public class UserDaoImp implements UserDao {
               .setParameter("car_model", car_model)
               .setParameter("car_series", car_series);
       Car car = findCarQuery.getSingleResult();
-      String s = car.getModel() + " " + car.getSeries();
-      System.out.println("Поиск по машине - " + s );
-      List<User> users = listUsers();
-      User wantedUser = users.stream()
+      System.out.println("Поиск по машине - " + car.getModel() + " " + car.getSeries() );
+      User wantedUser = listUsers().stream()
               .filter(user -> user.getCar().equals(car.toString()))
               .findAny().orElse(null);
 //      for (User user : users) {
