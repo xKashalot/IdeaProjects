@@ -38,6 +38,11 @@ public class MainApp {
       }
       System.out.println(userService.findByCar("Bmw", 5));
       System.out.println(userService.findByCar("audi", 4));
+
+      Car car1 = new Car("Toyota", 200);
+      userService.add(new User("chelovek", "molekula", "molekulaman@mail.ru", car1));
+      System.out.println(userService.findByCar2(car1));
+
       context.close();
    }
 }

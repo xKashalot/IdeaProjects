@@ -32,7 +32,7 @@ public class UserServiceImp implements UserService {
       return userDao.findByCar(carModel, carSeries);
    }
 
-//   @Override
-//   public User findByCar2(Car car) { return userDao.findByCar2(car);}
+   @Override
+   public User findByCar2(Car car) { return userDao.findByCar2(car);}
 
 }

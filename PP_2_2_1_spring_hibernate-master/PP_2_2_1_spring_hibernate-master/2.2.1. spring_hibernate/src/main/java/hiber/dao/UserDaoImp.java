@@ -35,10 +35,20 @@ public class UserDaoImp implements UserDao {
               .setParameter("carModel", carModel)
               .setParameter("carSeries", carSeries);
       Car car = findCarQuery.getSingleResult();
-      System.out.println("Поиск по машине - " + car.getModel() + " " + car.getSeries() );
+      System.out.println("Поиск по машине: " + car.getModel() + " " + car.getSeries() );
       User wantedUser = listUsers().stream()
               .filter(user -> user.getCar().equals(car.toString()))
               .findAny().orElse(null);
       return wantedUser;
+   }
+
+   @Override
+   public User findByCar2(Car car) {
+      TypedQuery<User> findUser = sessionFactory.getCurrentSession()
+              .createQuery("from User where car = :car")
+              .setParameter("car", car);
+      User user = findUser.getSingleResult();
+      System.out.println("Поиск по машине: " + user.getCar());
+      return user;
    }
 }
