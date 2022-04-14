@@ -20,7 +20,7 @@ public class User {
    private String email;
 
    @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "car_id", referencedColumnName = "id")
+   @JoinColumn(name = "carId", referencedColumnName = "id")
    private Car car;
 
    public User() {}
