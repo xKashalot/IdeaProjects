@@ -8,5 +8,6 @@ import java.util.List;
 public interface UserDao {
    void add(User user);
    List<User> listUsers();
-   User findByCar(String car_model, int car_series);
+   User findByCar(String carModel, int carSeries);
+   //User findByCar2(Car car);
 }

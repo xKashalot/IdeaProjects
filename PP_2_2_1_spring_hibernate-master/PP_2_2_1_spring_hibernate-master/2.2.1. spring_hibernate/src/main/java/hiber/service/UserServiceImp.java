@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Query;
 import java.util.List;
 
 @Service
@@ -29,9 +28,11 @@ public class UserServiceImp implements UserService {
    }
 
    @Override
-   public User findByCar(String car_model, int car_series) {
-      return userDao.findByCar(car_model, car_series);
+   public User findByCar(String carModel, int carSeries) {
+      return userDao.findByCar(carModel, carSeries);
    }
 
+//   @Override
+//   public User findByCar2(Car car) { return userDao.findByCar2(car);}
 
 }

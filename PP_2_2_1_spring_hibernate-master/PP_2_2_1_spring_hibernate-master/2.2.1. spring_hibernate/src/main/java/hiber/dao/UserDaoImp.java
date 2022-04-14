@@ -3,7 +3,6 @@ package hiber.dao;
 import hiber.model.Car;
 import hiber.model.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,24 +30,15 @@ public class UserDaoImp implements UserDao {
    }
 
    @Override
-   public User findByCar(String car_model, int car_series) {
-      TypedQuery<Car> findCarQuery = sessionFactory.getCurrentSession().createQuery("from Car where model = :car_model and series = :car_series")
-              .setParameter("car_model", car_model)
-              .setParameter("car_series", car_series);
+   public User findByCar(String carModel, int carSeries) {
+      TypedQuery<Car> findCarQuery = sessionFactory.getCurrentSession().createQuery("from Car where model = :carModel and series = :carSeries")
+              .setParameter("carModel", carModel)
+              .setParameter("carSeries", carSeries);
       Car car = findCarQuery.getSingleResult();
       System.out.println("Поиск по машине - " + car.getModel() + " " + car.getSeries() );
       User wantedUser = listUsers().stream()
               .filter(user -> user.getCar().equals(car.toString()))
               .findAny().orElse(null);
-//      for (User user : users) {
-//         if (user.getCar().contains(car.toString())){
-//            User wanteduser = user;
-//            return wanteduser;
-//         }
-//       return null;
-//      }
       return wantedUser;
    }
-
-
 }

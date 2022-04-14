@@ -16,10 +16,6 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-
     public Car(String model, int series) {
         this.model = model;
         this.series = series;

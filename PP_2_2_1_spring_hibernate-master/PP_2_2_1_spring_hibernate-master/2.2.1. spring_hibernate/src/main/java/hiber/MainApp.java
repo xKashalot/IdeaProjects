@@ -36,10 +36,8 @@ public class MainApp {
          System.out.println("Car = " +user.getCar());
          System.out.println();
       }
-
       System.out.println(userService.findByCar("Bmw", 5));
-      System.out.println(userService.findByCar("Ваз", 2109));
-
+      System.out.println(userService.findByCar("audi", 4));
       context.close();
    }
 }
