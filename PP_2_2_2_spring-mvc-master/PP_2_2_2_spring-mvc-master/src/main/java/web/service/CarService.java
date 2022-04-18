@@ -1,6 +1,5 @@
 package web.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.model.Car;
 
@@ -10,9 +9,8 @@ import java.util.stream.Collectors;
 
 @Service
 public interface CarService {
-     List<Car> carList = new ArrayList<>();
-
-     static List<Car> getCars() {
+     static List<Car> carList() {
+        List<Car> carList = new ArrayList<>();
         carList.add(new Car("BMW", 2010, 200));
         carList.add(new Car("Mazda", 2015, 150));
         carList.add(new Car("Audi", 2000, 100));
