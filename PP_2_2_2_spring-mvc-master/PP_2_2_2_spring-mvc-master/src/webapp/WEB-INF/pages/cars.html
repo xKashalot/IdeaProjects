@@ -8,7 +8,9 @@
 
 <body>
 
-<p th:text="${cars}" />
+<p th:each="car : ${cars}">
+    <a th:text="${car}" />
+</p>
 
 <table th:border="1">
     <tr>
