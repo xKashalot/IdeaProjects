@@ -14,10 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {
-
-    @Autowired
-    CarService carService;
-
+    
     List<Car> carList = new ArrayList<>(Arrays.asList(
             new Car("BMW", 2010, 200),
             new Car("Mazda", 2015, 150),
