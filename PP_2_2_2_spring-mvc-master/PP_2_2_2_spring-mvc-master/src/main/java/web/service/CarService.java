@@ -10,13 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public interface CarService {
-    List<Car> carList = new ArrayList<>(Arrays.asList(
-            new Car("BMW", 2010, 200),
-            new Car("Mazda", 2015, 150),
-            new Car("Audi", 2000, 100),
-            new Car("Volkswagen", 2020, 400),
-            new Car("Toyota", 1990, 250)));
-
     List<Car> showCars(int count);
 
 //     static List<Car> carList() {
