@@ -6,9 +6,13 @@
 </head>
 <body>
 
+<tr> id </tr>
 <p th:text="${user.getId()}" />
+<tr> name </tr>
 <p th:text="${user.getName()}" />
-<p th:text="${user.getLast_name()}" />
+<tr> last name </tr>
+<p th:text="${user.getLastName()}" />
+<tr> city </tr>
 <p th:text="${user.getCity()}" />
 
 <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}" th:object="${user}">

@@ -14,18 +14,22 @@
         <th>City</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Solo view</th>
     </tr>
 
     <tr th:each="user : ${users}">
         <th th:utext="${user.getId()}" />
         <th th:utext="${user.getName()}" />
-        <th th:utext="${user.getLast_name()}" />
+        <th th:utext="${user.getLastName()}" />
         <th th:utext="${user.getCity()}" />
         <th> <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}" th:object="${user}">
             <input type="submit" value="Go" />
         </form></th>
         <th> <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
             <input type="submit" value="Pls no" />
+        </form> </th>
+        <th> <form th:method="GET" th:action="@{/users/{id}(id=${user.getId()})}">
+            <input type="submit" value="View" />
         </form> </th>
     </tr>
 </table>

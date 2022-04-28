@@ -2,9 +2,12 @@ package crudapp.service;
 
 import crudapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -12,33 +15,30 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public User showUser(int id) {
-       return null;
-        // return usersList.stream().filter(user -> user.getId() == id).findAny().orElse(null);
+       return (User) entityManager.createQuery("from User where id = :id").setParameter("id", id).getSingleResult();
     }
 
     @Override
     public void save(User user) {
-//        user.setId(++USER_COUNT);
-//        usersList.add(user);
+        entityManager.persist(user);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<User> users() {
-        Query query = entityManager.createQuery("FROM User");
-        return query.getResultList();
+        return entityManager.createQuery("from User").getResultList();
     }
 
 
 
-    @Override
+    @Transactional
     public void delete(int id) {
-//        usersList.removeIf(x -> x.getId() == id);
+        entityManager.createQuery("delete from User where id = :id").setParameter("id", id).executeUpdate();
     }
 
     @Override
