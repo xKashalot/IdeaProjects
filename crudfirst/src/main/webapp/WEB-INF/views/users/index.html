@@ -22,13 +22,13 @@
         <th th:utext="${user.getName()}" />
         <th th:utext="${user.getLastName()}" />
         <th th:utext="${user.getCity()}" />
-        <th> <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}" th:object="${user}">
-            <input type="submit" value="Go" />
+        <th> <form th:method="POST" th:action="@{/users/edit (id=${user.getId()})}" th:object="${user}">
+            <input type="submit" value="Edit" />
         </form></th>
-        <th> <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+        <th> <form th:method="POST" th:action="@{/users/?id={id}(id=${user.getId()})}">
             <input type="submit" value="Pls no" />
         </form> </th>
-        <th> <form th:method="GET" th:action="@{/users/{id}(id=${user.getId()})}">
+        <th> <form th:method="POST" th:action="@{/users/view (id=${user.getId()})}">
             <input type="submit" value="View" />
         </form> </th>
     </tr>
